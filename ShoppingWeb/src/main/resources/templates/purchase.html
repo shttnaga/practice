@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>商品カート</title>
+    <link rel="stylesheet" type="text/css" href="/purchase.css">
+</head>
+<body>
+    <h1>商品カート</h1>
+    <div class="container">
+        <div class="table-container">
+            <h2>選択された商品</h2>
+            <table>
+                <tr>
+                    <th style="width: 20%;">商品ID</th>
+                    <th style="width: 30%;">商品名</th>
+                    <th style="width: 50%;">画像</th>
+                </tr>
+                <!-- itemListから商品情報を表示 -->
+                <tr>
+                    <td th:text="${product_id}"></td>
+                    <td th:text="${product_name}"></td>
+                    <!-- 商品画像の表示 -->
+                    <td><img th:src="@{/picture/{filename}(filename=${product_name + '.jpg'})}" alt="商品画像" style="width: 100px; height: 100px;"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="table-container">
+            <h2>合計金額</h2>
+            <table>
+                <tr>
+                    <th>項目</th>
+                    <th>値</th>
+                </tr>
+                <tr>
+                    <td class="quantity">選択した数量</td>
+                    <!-- quantityの値を表示 -->
+                    <td class="quantity" th:text="${quantity}"></td>
+                </tr>
+                <tr>
+                    <td class="total-price">合計金額</td>
+                    <!-- totalPriceの値を表示 -->
+                    <td class="total-price" th:text="${totalPrice} + '円'"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!-- hidden inputに商品情報を追加 -->
+    <div class="purchase-button-container">
+        <form th:action="@{/Shopping/purchase}" method="post">
+            <!-- 隠しフィールドに商品情報を追加 -->
+            <input type="hidden" name="product_id" th:value="${product_id}">
+            <input type="hidden" name="product_name" th:value="${product_name}">
+            <input type="hidden" name="price" th:value="${price}">
+            <input type="hidden" name="quantity" th:value="${quantity}">
+            <input type="hidden" name="totalPrice" th:value="${totalPrice}">
+            <input type="submit" value="購入画面に進む">
+        </form>
+    </div>
+</body>
+</html>

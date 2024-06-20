@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>アカウント登録</title>
+    <link rel="stylesheet" type="text/css" href="/register.css">
+</head>
+
+<div class="outer-container">
+    <div class="inner-container">
+        <img src="https://image.vorkers.com/resize/120x-/logo/company/34860-197f82df2bf6ef986ea9f897705b4656.png"
+             alt="株式会社SHTのロゴ" class="logo">
+        <div>
+            <h2>株式会社SHT</h2>
+            <h3>Sys部新人研修<br>演習用ショッピングサイト</h3>
+        </div>
+    </div>
+
+    <h2>アカウント登録</h2>
+    <form th:action="@{/register/doregister}" method="post">
+        <label for="username">ID</label><br>
+        <input type="text" id="username" name="id" placeholder="IDを入力してください" required><br>
+
+        <label for="password">パスワード</label><br>
+        <input type="password" id="password" name="password" placeholder="パスワードを入力してください" required><br>
+
+        <label for="confirmPassword">もう一度パスワードを入力してください</label><br>
+        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="パスワードを入力してください" required><br>
+
+        <label for="email">メールアドレス</label><br>
+        <input type="email" id="email" name="email" placeholder="メールアドレスをを入力してください" required><br>
+
+        <input type="submit" value="登録">
+
+        <!-- Thymeleafの条件式でエラーメッセージを表示 -->
+        <p th:if="${errorMessage}" class="error-message" th:text="${errorMessage}"></p>
+		</form>
+		<form th:action="@{/login/login}" method="get">
+			<p>すでにアカウントをお持ちの方は	<input type="submit" value="こちら"></p>
+		</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+@charset "UTF-8";
+body {
+    font-family: 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, sans-serif; /* 日本語フォント */
+    background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20230518/pngtree-bakery-with-many-wooden-shelves-with-lots-of-bread-image_2524518.jpg'); /* 背景画像のURL */
+    background-size: cover; /* 画像を全体に広げる */
+    background-position: center; /* 画像を中央に配置 */
+    color: #444; /* テキストの色（白色） */
+    margin: 0;
+    padding: 0;
+    margin-bottom: 0; /* 下の余白をなくす */
+    height: 100vh; /* 画面全体の高さを100%に設定 */
+    display: flex; /* 要素を縦方向に配置するための設定 */
+    flex-direction: column; /* 要素を縦方向に配置するための設定 */
+    justify-content: center; /* 要素を縦方向中央に配置するための設定 */
+}
+
+h1, p {
+    text-align: center;
+    color: #ffffff; /* タイトルの色（白色） */
+    text-shadow: 2px 2px 2px black; /* 黒いふちを追加 */
+}
+
+a {
+    color: #ffffff; /* リンクの色（白色） */
+    text-decoration: underline; /* 下線を追加 */
+}
+
+a:hover {
+    color: #45a049; /* リンクの色（ホバー時） */
+}

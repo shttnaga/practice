@@ -1,0 +1,119 @@
+ body {
+        font-family: 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, sans-serif; /* 日本語フォント */
+        background-color: #fff; /* 白色の背景 */
+        color: #444; /* テキストの色 */
+        margin: 0;
+        padding: 0;
+    }
+    h1 {
+        text-align: center;
+        padding-top: 20px;
+        color: #8c655b; /* タイトルの色 */
+    }
+div {
+    background-image: url(/picture/00012903_736a23.jpg);
+}
+
+    form {
+        text-align: center;
+        margin-top: 20px;
+    }
+    label {
+        display: inline-block;
+        width: 100px;
+        font-weight: bold;
+    }
+    input[type="text"],
+    select {
+        width: 200px;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+    }
+    input[type="submit"] {
+        padding: 10px 20px;
+        background-color: #8c655b; /* ボタンの色 */
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    input[type="submit"]:hover {
+        background-color: #5e493a; /* ホバー時の色 */
+    }
+.product-table {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px; /* 余白の上部マージン */
+    margin-bottom: 0; /* 余白の下部マージンを削除 */
+}
+
+.product-item {
+    width: calc(16.66% - 20px); /* Adjusted width */
+    margin: 10px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    position: relative;
+    background-color: #fff;
+    border-radius: 10px;
+}
+.product-image {
+    text-align: center;
+    margin-top: 100px; /* 余白の上部マージン */
+    margin-bottom: 0; /* 余白の下部マージンを削除 */
+    position: relative;
+}
+.product-image img {
+    width: 100%;
+    height: auto;
+    border: 8px solid #8c655b; /* 写真のふちに線を追加 */
+    box-shadow: 0 0 0 4px #fff, /* 上側の影 */
+                0 0 0 6px #8c655b; /* 下側の影 */
+}
+
+    .product-image img {
+        width: 100%;
+        height: auto;
+    }
+
+.image-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: transparent; /* 背景を透明に */
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    color: #fff; /* テキストを白に */
+    font-size: 40px; /* テキストサイズを大きく */
+    text-shadow: -1px -1px 0 #8c655b,  
+                  1px -1px 0 #8c655b,
+                 -1px  1px 0 #8c655b,
+                  1px  1px 0 #8c655b; /* 茶色のふち */
+}
+
+/* Topボタンのスタイル */
+#topBtn {
+    display: none; /* 最初は非表示 */
+    position: fixed; /* スクロールに追従 */
+    bottom: 20px; /* 画面下部からの距離 */
+    right: 20px; /* 画面右端からの距離 */
+    z-index: 99; /* 最前面に表示 */
+    border: none;
+    outline: none;
+    background-color: #8c655b; /* ボタンの背景色 */
+    color: white; /* ボタンのテキスト色 */
+    cursor: pointer;
+    padding: 15px; /* ボタンの大きさ */
+    border-radius: 50%; /* 円形にする */
+}
+
+/* Topボタンのホバースタイル */
+#topBtn:hover {
+    background-color: #5e493a; /* ホバー時の背景色 */
+}

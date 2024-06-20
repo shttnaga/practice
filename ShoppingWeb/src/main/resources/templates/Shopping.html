@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>購入サイト</title>
+    <link rel="stylesheet"type="text/css" href="/Shopping.css">
+</head>
+<body>
+    <h1>商品選択</h1>
+    <div class="product-image">
+        <img src="https://www.edelweiss.co.jp/assets/img/magazine/magazine_10_mv.jpg" alt="商品画像">
+        <div class="image-title">Items<br>
+        12種類のパン  </div>
+    </div>
+
+    <div class="product-table">
+        <div th:each="sib : ${session.itemList}" class="product-item">
+            <div>商品ID: <span th:text="${sib.product_id}"></span></div>
+            <div>商品名: <span th:text="${sib.product_name}"></span></div>
+            <div>価格: <span th:text="${sib.price}"></span></div>
+            <img th:src="@{/picture/{filename}(filename=${sib.product_name + '.jpg'})}" style="width: 100px; height: 100px;">
+        </div>
+    </div>
+
+	<form th:action="@{/Shopping/purchase}" method="post" onsubmit="return validateForm();">
+	    <label for="product_id">商品ID:</label>
+	    <input type="text" id="product_id" name="product_id">
+	    <br>
+	    <label for="product_name">商品名:</label>
+	    <input type="text" id="product_name" name="product_name">
+	    <br>
+	    <label for="price">価格:</label>
+	    <input type="text" id="product_price" name="price">
+	    <br>
+	    <label for="quantity">数量:</label>
+	    <select id="quantity" name="quantity">
+	        <option th:each="i : ${#numbers.sequence(0, 5)}" th:value="${i}" th:text="${i}"></option>
+	    </select>
+	    <br>
+	    <input type="submit" value="カートに追加">
+	</form>
+
+    <!-- Topボタン -->
+    <button onclick="topFunction()" id="topBtn" title="ページの先頭へ">Top</button>
+
+    <script >
+    /*<![CDATA[*/
+    function validateForm() {
+        var productId = document.getElementById("product_id").value;
+        var productName = document.getElementById("product_name").value;
+        var productPrice = document.getElementById("product_price").value;
+
+        if (productId === "" || productName === "" || productPrice === "") {
+            alert("何も選択されていません。");
+            return false; // フォーム送信をキャンセル
+        }
+    }
+
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("topBtn").style.display = "block";
+        } else {
+            document.getElementById("topBtn").style.display = "none";
+        }
+    }
+
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    /*]]>*/
+    </script>
+</body>
+</html>
