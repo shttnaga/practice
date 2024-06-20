@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ログイン画面</title>
+    <link rel="stylesheet" type="text/css" href="/login.css">
+</head>
+<body>
+<div class="outer-container">
+    <div class="inner-container">
+        <img th:src="@{https://image.vorkers.com/resize/120x-/logo/company/34860-197f82df2bf6ef986ea9f897705b4656.png}"
+             alt="株式会社SHTのロゴ" class="logo">
+        <div>
+            <h2>株式会社SHT</h2>
+            <h3>Sys部新人研修<br>演習用ショッピングサイト</h3>
+        </div>
+    </div>
+    
+    <div>
+        <h2>ログイン画面</h2>
+        <form th:action="@{/login/doregister}" method="post">
+            <div class="mb-3">
+                <label for="id">ユーザID</label><br>
+                <input type="text" id="id" name="id" placeholder="IDを入力してください" required size="30"><br>
+                
+                <label for="password">パスワード</label><br>
+                <input type="password" id="password" name="password" placeholder="パスワードを入力してください" required size="30"><br>
+                
+                <br>
+                <input type="submit" value="ログイン"><br>
+                
+                <p th:if="${errorMessage}" class="error-message" th:text="${errorMessage}"></p>
+            </div>
+        </form>
+        <form th:action="@{/register/register}" method="get">
+        <p>アカウント登録がまだな方は<input type="submit" value="こちら"> </p>
+		</form>
+    </div>
+</div>
+</body>
+</html>

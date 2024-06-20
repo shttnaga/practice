@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>購入確認画面</title>
+    <link rel="stylesheet" type="text/css" href="/PurchaseBuy.css"> <!-- External CSS link -->
+</head>
+<body>
+    <h1>購入確認画面</h1>
+    <form th:action="@{/purchaseController/processPurchase}" method="post">
+        <table border="1" cellspacing="0">
+            <th:block th:if="${session.product_id!= null}">
+                <h2>カート内情報</h2>
+                <p>商品ID: <span th:text="${session.product_id}"></span></p>
+                <p>商品名: <span th:text="${session.product_name}"></span></p>
+                <p>合計金額: <span th:text="${session.totalPrice}"></span>円</p>
+                
+                <!-- 商品IDを隠しフィールドとして追加 -->
+                <input type="hidden" name="product_id" th:value="${session.product_id}">
+                <!-- 商品名を隠しフィールドとして追加 -->
+                <input type="hidden" name="product_name" th:value="${session.product_name}">
+                <!-- 合計金額を隠しフィールドとして追加 -->
+                <input type="hidden" name="totalPrice" th:value="${session.totalPrice}">
+            </th:block>
+            <th:block th:unless="${session.product_id!= null}">
+                <p>購入情報がありません。</p>
+            </th:block>
+        
+            <!-- 購入ボタン -->
+			
+            <input type="submit" value="購入">
+        </table>
+    </form>
+</body>
+</html>

@@ -1,0 +1,76 @@
+@charset "UTF-8";
+   body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        .outer-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center; /* 見出しを中央寄せにする */
+        }
+        .inner-container {
+            display: flex;
+            align-items: center; /* アイテムを中央揃えにする */
+            justify-content: center; /* アイテムを中央寄せにする */
+            flex-direction: row; /* アイテムを横並びにする */
+            padding: 20px;
+            text-align: left; /* フォームを左寄りにする */
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin-top: 20px;
+            text-align: left; /* フォームを左寄りにする */
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-sizing: border-box;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+        p {
+            text-align: left; /* テキストを左寄りにする */
+            margin-top: 10px; /* マージン追加 */
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .logo {
+            max-width: 100px; /* 画像の最大幅を設定 */
+            margin-right: 20px; /* 画像とテキストの間隔を調整 */
+        }
