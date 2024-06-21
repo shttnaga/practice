@@ -11,7 +11,7 @@ public class AddNewItemService {
 	@Autowired
 	ShopRepository shopRepository;
 	
-    public ShoppingItem AddrNewItem(String product_name, Integer price, Integer quantity) {
+    public ShoppingItem AddNewItem(String product_name, Integer price, Integer quantity) {
         // ShoppingItemエンティティを作成して情報をセット
         ShoppingItem newItem = new ShoppingItem();
         newItem.setProduct_name(product_name);

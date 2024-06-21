@@ -29,7 +29,7 @@ public class  AddNewItemController{
 			  					@RequestParam("quantity") Integer quantity) {
 		
 			   // 登録サービスを呼び出して新規商品情報を登録する
-			addNewItemService.AddrNewItem(product_name, price, quantity);
+			addNewItemService.AddNewItem(product_name, price, quantity);
 			return "endadd";
 		}
 			  					
