@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import sample.Entity.ShoppingItem;
-import sample.Repository.StocksRepository;
+import sample.Repository.ShopRepository;
 
 @Service
 public class StockService {
     
     @Autowired
-   private  StockRepository stockRepository;
+   private  ShopRepository ShopRepository;
     
     public List<ShoppingItem> findAll() {
         return (List<ShoppingItem>) StockRepository.findAll(); 
