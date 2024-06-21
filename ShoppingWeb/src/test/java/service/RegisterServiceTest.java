@@ -32,12 +32,24 @@ public class RegisterServiceTest {
         }if(register.isPresent()) {
         	System.out.print("registerに値あり");
         }
+        
+        Optional<Register> register2 = registerRepository.login("takashi", "11111");
+        if(register2.isEmpty()){
+        	System.out.println("registerに値ない");
+        }if(register2.isPresent()) {
+        	System.out.println("registerに値あり");
+        }
 
        
      
 	}
+	@Test
 	public void registerFindAll() {
 		Iterable<Register> list=registerRepository.findAll();
+		for(Register regist:list) {
+			System.out.println("id"+regist.getId());
+		}
+		
 		
 	}
 }
