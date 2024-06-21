@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import sample.Service.AddNewItemService;
+import sample.Service.ShopService;
+
+
 
 
 @Controller
@@ -15,7 +17,7 @@ import sample.Service.AddNewItemService;
 public class  AddNewItemController{
 	
 	 @Autowired
-	    private AddNewItemService addNewItemService;
+	    private ShopService ShopService;
 		
 		@GetMapping("/addItems")//管理者ページの表示
 		public String showDeveloperPage() {
@@ -29,7 +31,7 @@ public class  AddNewItemController{
 			  					@RequestParam("quantity") Integer quantity) {
 		
 			   // 登録サービスを呼び出して新規商品情報を登録する
-			addNewItemService.AddNewItem(product_name, price, quantity);
+			ShopService.AddNewItem(product_name, price, quantity);
 			return "endadd";
 		}
 			  					
