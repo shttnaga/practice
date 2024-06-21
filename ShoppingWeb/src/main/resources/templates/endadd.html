@@ -7,7 +7,10 @@
 <body>
     <div class="container">
         <h1>新商品の登録が完了しました</h1>
-        <a href="/AddNewItem/" class="btn back-btn">商品登録画面に戻る</a>
+		
+		<form th:action="@{/AddNewItem/developer}" method="post">
+		<input type="submit"  value="トップページに戻る"></p>
+		</form>
     </div>
 </body>
 </html>
