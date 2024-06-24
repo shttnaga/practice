@@ -1,6 +1,8 @@
 package sample.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,9 +36,34 @@ public class ShopService {
         return shopRepository.save(newItem);
     }
 
+
     public boolean existsByProductName(String productName) {
         return shopRepository.existsByProductName(productName);
     }
+
+    
+	//該当の購入情報から、在庫の量を増加する
+	Iterable<ShoppingItem> addQuantityRegist(Map<ShoppingItem,Integer> purchaseMap) {
+		List<ShoppingItem> purchaseProductsList=new ArrayList<ShoppingItem>();
+		for(ShoppingItem p:purchaseMap.keySet()) {
+			if(!(purchaseMap.get(p)==0)) {
+				purchaseProductsList.add(p);
+				Integer quantity=p.getQuantity();
+				p.setQuantity(quantity+(purchaseMap.get(p)));
+				updateByShoppingItem(p);
+			}
+		}
+		return purchaseProductsList;
+		
+	}
+	
+	public ShoppingItem updateByShoppingItem(ShoppingItem Items) {
+		Integer product_id=Items.getProduct_id();
+		Integer quantity=Items.getQuantity();
+		shopRepository.changeQuantity(quantity, product_id);
+		return Items;
+	}
+
 }
 
 
