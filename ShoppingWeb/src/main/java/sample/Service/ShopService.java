@@ -31,4 +31,5 @@ public class ShopService {
       return shopRepository.save(newItem);
 
   }
+
 }
