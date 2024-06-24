@@ -28,6 +28,11 @@ public class AddNewItemController {
             @RequestParam("price") Integer price,
             @RequestParam("quantity") Integer quantity,
             Model model) {
+    	
+    	if(shopService.existCount(product_name)) {
+    		model.addAttribute("errorMessage","商品名 "+product_name+"は既に存在します。");
+    		return "AddNewItem";
+    	}else {
 
         try {
             // 登録サービスを呼び出して新規商品情報を登録する
@@ -35,9 +40,10 @@ public class AddNewItemController {
             return "endadd";
         } catch (IllegalArgumentException e) {
             // 商品名が重複している場合のエラー処理
-            model.addAttribute("error", e.getMessage());
+            model.addAttribute("errorMessage", e.getMessage());
             return "error"; // エラーページを表示する
         }
+    	}
     }
 
     @PostMapping("/developer") // 管理者ページへ戻る

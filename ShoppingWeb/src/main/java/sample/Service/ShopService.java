@@ -22,10 +22,7 @@ public class ShopService {
     }
     public ShoppingItem AddNewItem(String product_name, Integer price, Integer quantity) {
         // 既存の商品名があるか確認する
-        int existingCount = shopRepository.countProductsWithName(product_name);
-        if (existingCount > 0) {
-            throw new IllegalArgumentException("商品名 '" + product_name + "' は既に存在します。");
-        }
+       
 
         // 新しいShoppingItemエンティティを作成して情報をセット
         ShoppingItem newItem = new ShoppingItem();
@@ -39,6 +36,13 @@ public class ShopService {
         } catch (DataIntegrityViolationException e) {
             throw new IllegalArgumentException("商品の追加中にエラーが発生しました。", e);
         }
+    }
+    // 既存の商品名があるか確認する
+    public boolean existCount(String product_name) {
+    	 int existingCount = shopRepository.countProductsWithName(product_name);
+         if (existingCount > 0) {
+        	 return true;
+         }return false;
     }
    
 	//該当の購入情報から、在庫の量を増加する
