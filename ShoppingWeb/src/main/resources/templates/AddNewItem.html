@@ -30,7 +30,7 @@
     </script>
 </head>
 <body>
-    <form class="AddNewItem-form" action="#" th:action="@{/AddNewItem/AddNewItem}" method="post" id="AddNewItemForm">
+    <form class="AddNewItem-form" action="#" th:action="@{/AddNewItem/AddNewItem}" method="post" id="AddNewItemForm" enctype="multipart/form-data">
         <h2>新規商品登録</h2>
         <div>
             <label for="product_name">商品名:</label>
@@ -43,6 +43,14 @@
         <div>
             <label for="quantity">個数:</label>
             <input type="text" id="quantity" name="quantity" th:required="required">
+        </div>
+        <div>
+            <label for="image">画像ファイル:</label>
+            <input type="file" id="image" name="image" accept="image/*">
+        </div>
+        <div>
+            <label for="new_image_name">新しい画像名:</label>
+            <input type="text" id="new_image_name" name="new_image_name">
         </div>
         <div class="button011">
             <button type="submit">登録</button>
@@ -57,3 +65,4 @@
     </form>
 </body>
 </html>
+
