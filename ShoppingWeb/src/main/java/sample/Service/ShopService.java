@@ -39,8 +39,8 @@ public class ShopService {
     }
 
 
-    public boolean existsByProductName(String productName) {
-        return shopRepository.existsByProductName(productName);
+    public int existsByProductName(String productName) {
+        return shopRepository.countProductsWithName(productName);
     }
 
     // 既存の商品名があるか確認する
