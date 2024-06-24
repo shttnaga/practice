@@ -35,12 +35,10 @@ public class ShopService {
         // データベースに保存
         return shopRepository.save(newItem);
     }
-<<<<<<< HEAD
 
     public boolean existsByProductName(String productName) {
         return shopRepository.existsByProductName(productName);
     }
-=======
     
 	//該当の購入情報から、在庫の量を増加する
 	Iterable<ShoppingItem> addQuantityRegist(Map<ShoppingItem,Integer> purchaseMap) {
@@ -63,7 +61,6 @@ public class ShopService {
 		shopRepository.changeQuantity(quantity, product_id);
 		return Items;
 	}
->>>>>>> origin/master
 }
 
 
