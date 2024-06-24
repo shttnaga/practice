@@ -28,7 +28,7 @@ public class addNewItemTest {
     @Test
     public void testAddNewItem() throws Exception {
         // Mockの動作を設定
-        doNothing().when(ShopServiceMock).AddNewItem(anyString(), anyInt(), anyInt());
+        doNothing().when(ShopServiceMock).addNewItem(anyString(), anyInt(), anyInt());
 
         // テスト用のリクエスト
         mockMvc.perform(MockMvcRequestBuilders.post("/AddNewItem")
@@ -39,6 +39,6 @@ public class addNewItemTest {
                 .andExpect(MockMvcResultMatchers.view().name("endadd"));
 
         // addNewItemServiceのメソッドが正しく呼び出されたことを検証
-        verify(ShopServiceMock, times(1)).AddNewItem("Test Product", 100, 5);
+        verify(ShopServiceMock, times(1)).addNewItem("Test Product", 100, 5);
     }
 }
