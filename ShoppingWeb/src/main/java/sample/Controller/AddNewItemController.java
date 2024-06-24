@@ -20,6 +20,7 @@ import sample.Service.ShopService;
 @RequestMapping("/AddNewItem")
 public class AddNewItemController {
 
+    // ファイル保存先のパス
     private static String UPLOADED_FOLDER = "src/main/resources/static/pictures/";
 
     @Autowired
@@ -95,4 +96,3 @@ public class AddNewItemController {
         return (dotIndex == -1) ? "" : fileName.substring(dotIndex);
     }
 }
-
