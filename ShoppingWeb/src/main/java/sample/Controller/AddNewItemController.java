@@ -17,31 +17,36 @@ public class AddNewItemController {
     @Autowired
     private ShopService shopService;
 
-    @GetMapping("/addItems")
+    @GetMapping("/addItems") // 管理者ページの表示
     public String showDeveloperPage() {
         return "developer";
     }
 
-    @PostMapping("/AddNewItem")
+    @PostMapping("/AddNewItem") // developerの新規商品情報追加
     public String addNewItem(
-            @RequestParam("product_name") String productName,
+            @RequestParam("product_name") String product_name,
             @RequestParam("price") Integer price,
             @RequestParam("quantity") Integer quantity,
             Model model) {
+    	
+    	if(shopService.existCount(product_name)) {
+    		model.addAttribute("errorMessage","商品名 "+product_name+"は既に存在します。");
+    		return "AddNewItem";
+    	}else {
 
-        // 商品が既に存在するか確認
         try {
-            shopService.addNewItem(productName, price, quantity);
-            model.addAttribute("success", "Product added successfully.");
-        } catch (RuntimeException e) {
-            model.addAttribute("error", "Failed to add product: " + e.getMessage());
-            return "developer"; // エラーメッセージを表示してdeveloperページに戻る
+            // 登録サービスを呼び出して新規商品情報を登録する
+            shopService.AddNewItem(product_name, price, quantity);
+            return "endadd";
+        } catch (IllegalArgumentException e) {
+            // 商品名が重複している場合のエラー処理
+            model.addAttribute("errorMessage", e.getMessage());
+            return "error"; // エラーページを表示する
         }
-
-        return "endadd"; // 成功した場合はendaddページに遷移
+    	}
     }
 
-    @PostMapping("/developer")
+    @PostMapping("/developer") // 管理者ページへ戻る
     public String goToDeveloperPage() {
         return "developer";
     }
