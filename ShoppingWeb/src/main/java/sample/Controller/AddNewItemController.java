@@ -21,7 +21,7 @@ import sample.Service.ShopService;
 public class AddNewItemController {
 
     // ファイル保存先のパス
-    private static String UPLOADED_FOLDER = "src/main/resources/static/pictures/";
+    private static String UPLOADED_FOLDER = "src/main/resources/static/picture/";
 
     @Autowired
     private ShopService shopService;
