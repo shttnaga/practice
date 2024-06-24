@@ -12,5 +12,8 @@ public interface ShopRepository extends CrudRepository< ShoppingItem, Integer>{
 	@Modifying
 	@Query(value="UPDATE product SET quantity= :quantity WHERE product_id= :product_id")
 	void changeQuantity(@Param("quantity") Integer quantity,@Param("product_id")Integer product_id);
+	@Query("SELECT COUNT(*) FROM product WHERE product_name = :product_name")
+	int countProductsWithName(@Param("product_name") String productName);
 }
+
 
