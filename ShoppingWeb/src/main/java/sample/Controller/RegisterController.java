@@ -1,6 +1,7 @@
 package sample.Controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,7 +40,8 @@ public class RegisterController {
                                    HttpSession session
                                    ) {
         // ユーザー認証の処理を実装（例えば、データベースからユーザー情報を検索して認証する）
-        Register user = registerService.login(id, password);
+   
+        Optional<Register> user = registerService.login(id, password);
 
         if (user == null) {
             request.setAttribute("errorMessage", "ログインに失敗しました。IDまたはパスワードが正しくありません。");

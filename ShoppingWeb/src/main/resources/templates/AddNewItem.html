@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新規商品登録</title>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function() {
+            const priceInput = document.getElementById("price");
+            const quantityInput = document.getElementById("quantity");
+
+            priceInput.addEventListener("input", function() {
+                if (!isValidNumber(this.value)) {
+                    alert("値段は半角数字で入力してください。");
+                    this.value = ""; // 入力をクリアするなどの処理を行うこともできます
+                }
+            });
+
+            quantityInput.addEventListener("input", function() {
+                if (!isValidNumber(this.value)) {
+                    alert("個数は半角数字で入力してください。");
+                    this.value = ""; // 入力をクリアするなどの処理を行うこともできます
+                }
+            });
+
+            function isValidNumber(str) {
+                return str.match(/^\d*$/);
+            }
+        });
+    </script>
+</head>
+<body>
+    <form class="AddNewItem-form" action="#" th:action="@{/AddNewItem/AddNewItem}" method="post" id="AddNewItemForm">
+        <h2>新規商品登録</h2>
+        <div>
+            <label for="product_name">商品名:</label>
+            <input type="text" id="product_name" name="product_name" th:required="required">
+        </div>
+        <div>
+            <label for="price">値段:</label>
+            <input type="text" id="price" name="price" th:required="required">
+        </div>
+        <div>
+            <label for="quantity">個数:</label>
+            <input type="text" id="quantity" name="quantity" th:required="required">
+        </div>
+        <div class="button011">
+            <button type="submit">登録</button>
+        </div>
+        <div th:if="${errorMessage != null}">
+            <span th:text="${errorMessage}"></span>
+        </div>
+        <div>
+            <a th:href="@{/login/doLogin}">管理者ページへ戻る</a>
+        </div>
+    </form>
+</body>
+</html>

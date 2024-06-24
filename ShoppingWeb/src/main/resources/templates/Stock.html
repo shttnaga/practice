@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>在庫管理画面</title>
+</head>
+<body>
+    <h1>商品在庫情報</h1>
+    
+    <table border="1">
+        <thead>
+            <tr>
+				<th>商品ID</th>
+                <th>商品名</th>
+                <th>在庫数</th>
+                <th>在庫追加数</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Loop through each product in the list -->
+            <tr th:each="product : ${products}">
+				<td th:text="${product.productID}"></td>
+                <td th:text="${product.productName}"></td>
+                <td th:text="${product.quantity}"></td>
+                <td>
+                    <form th:action="@{/stock/add}" method="post">
+                        <input type="hidden" id="product_id" name="product_id" th:value="${product.productId}"/>
+                        <input type="number" id="quantityToAdd" name="quantityToAdd" value="1"/>
+                        <button type="submit">Add Stock</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+</body>
+</html>
