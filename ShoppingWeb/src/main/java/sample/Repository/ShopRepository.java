@@ -14,6 +14,16 @@ public interface ShopRepository extends CrudRepository< ShoppingItem, Integer>{
 	void changeQuantity(@Param("quantity") Integer quantity,@Param("product_id")Integer product_id);
 	@Query("SELECT COUNT(*) FROM product WHERE product_name = :product_name")
 	int countProductsWithName(@Param("product_name") String productName);
+	
+    @Modifying
+    @Query(value = "INSERT INTO product (product_name, price, quantity) " +
+                   "SELECT :productName, :price, :quantity " +
+                   "WHERE NOT EXISTS (SELECT 1 FROM product WHERE product_name = :productName)")
+    void insertIfNotExists(
+            @Param("productName") String productName,
+            @Param("price") Integer price,
+            @Param("quantity") Integer quantity);
+
 }
 
 
