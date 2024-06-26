@@ -17,20 +17,24 @@
         </thead>
         <tbody>
             <!-- Loop through each product in the list -->
-            <tr th:each="product : ${products}">
-				<td th:text="${product.productID}"></td>
-                <td th:text="${product.productName}"></td>
+            <tr th:each="product : ${session.itemList}">
+				<td th:text="${product.product_id}"></td>
+                <td th:text="${product.product_name}"></td>
                 <td th:text="${product.quantity}"></td>
                 <td>
-                    <form th:action="@{/stock/add}" method="post">
-                        <input type="hidden" id="product_id" name="product_id" th:value="${product.productId}"/>
-                        <input type="number" id="quantityToAdd" name="quantityToAdd" value="1"/>
+                    <form th:action="@{/Stock/Stock}" method="post">
+                        <input type="hidden" id="product_id" name="product_id" th:value="${product.product_id}"/>
+                        <input type="number" id="quantityToAdd" th:name="${product.product_name}" value="0"/>
                         <button type="submit">Add Stock</button>
                     </form>
                 </td>
             </tr>
         </tbody>
     </table>
+	
+	<form th:action="@{/develop/showDevelop}"method="get">
+		<input type="submit" value="管理者画面へ">
+	</form>
     
 </body>
 </html>

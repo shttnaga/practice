@@ -52,7 +52,7 @@ public class ShopService {
     }
 
 	//該当の購入情報から、在庫の量を増加する
-	Iterable<ShoppingItem> addQuantityRegist(Map<ShoppingItem,Integer> purchaseMap) {
+	public Iterable<ShoppingItem> addQuantityRegist(Map<ShoppingItem,Integer> purchaseMap) {
 		List<ShoppingItem> purchaseProductsList=new ArrayList<ShoppingItem>();
 		for(ShoppingItem p:purchaseMap.keySet()) {
 			if(!(purchaseMap.get(p)==0)) {

@@ -15,5 +15,9 @@ public class Developer {
 	public String develop() {
 		return "AddNewItem";
 	}
+	@GetMapping("changeProducts")
+	public String changeProducts() {
+		return "stock";
+	}
 
 }
